@@ -1,0 +1,36 @@
+#include "mbed.h"
+
+using namespace ThisThread;
+#define BLINK_RATE 500ms
+DigitalOut LED_RED(D3);
+DigitalOut LED_GREEN(D4);
+DigitalOut LED_TEST(LED1);
+DigitalIn SWITCH(D5,PullUp);
+PwmOut PWM_LED(D9);
+
+
+int main()
+{
+    LED_TEST=1;
+    PWM_LED.period(0.001f);
+    PWM_LED.write(0.5f);
+
+    while (1) {
+        if(SWITCH==1){
+            LED_GREEN=0;
+            LED_RED=1;
+            sleep_for(500ms);
+            LED_RED=0;
+             sleep_for(500ms);
+        }
+        else{
+            LED_RED=0;
+            LED_GREEN=1;
+            sleep_for(500ms);
+            LED_GREEN=0;
+             sleep_for(500ms);
+        }
+        
+
+    }
+}

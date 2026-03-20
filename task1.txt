@@ -1,0 +1,30 @@
+/* mbed Microcontroller Library
+ * Copyright (c) 2019 ARM Limited
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+#include "mbed.h"
+
+using namespace ThisThread;
+#define BLINK_RATE 1000ms
+DigitalOut LED_RED(PB_6);
+DigitalOut LED_GREEN(PB_1);
+DigitalOut LED_TEST(LED1);
+DigitalOut LOW_LEVEL(D9);
+
+int main()
+{
+    LED_RED=1;
+    LED_GREEN=0;
+    LOW_LEVEL=1;
+    
+
+    while (1) {
+        LED_TEST=1;
+        LED_RED=!LED_RED;
+        LED_GREEN=!LED_GREEN;
+        sleep_for(BLINK_RATE);
+        // ThisThread::sleep_for(BLINK_RATE);
+
+    }
+}
